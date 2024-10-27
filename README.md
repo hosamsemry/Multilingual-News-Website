@@ -15,3 +15,7 @@ A Django-based news website that supports multiple languages (Arabic, English, F
 ## Prerequisites
 
 Ensure you have the dependencies in `requirements.txt` file installed on your machine.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or want to add new features, feel free to open an issue or submit a pull request. 
