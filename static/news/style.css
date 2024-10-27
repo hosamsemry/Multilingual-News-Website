@@ -1,0 +1,68 @@
+/* styles.css */
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+nav {
+    background-color: #4CAF50;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+/* Heading Styling */
+h1 {
+    color: #4CAF50;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* Articles List Styling */
+ul {
+    margin: 1rem auto;
+    max-width: 600px;
+    padding: 0;
+}
+
+ul li {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+ul li p {
+    margin: 0.5rem 0 0;
+    color: #666;
+}

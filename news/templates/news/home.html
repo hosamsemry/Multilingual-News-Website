@@ -1,0 +1,42 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Makram Ebaid News" %}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">{% trans "Latest News" %}</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for news in news_items %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <p>{{ news.content|truncatechars:150 }}</p>
+                    <a href="{% url 'news:news_detail' news.pk %}" class="btn btn-primary">{% trans "Read More" %}</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-center">{% trans "No news items available" %}</p>
+        {% endfor %}
+    </div>
+    
+    <h1 class="text-center my-5">{% trans "Articles" %}</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for article_item in articles %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    
+                        
+                    <h5 class="card-title">{{ article_item.title }}</h5>
+                    <hr>
+                    <p class="card-text">{{ article_item.content|truncatechars:150 }}</p>
+                    <p><small class="text-muted">{{ article_item.published_at|date:"Y-m-d" }}</small></p>
+                    <a href="{% url 'news:article_detail' article_item.pk %}" class="btn btn-primary">{% trans "Read More" %}</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-center">{% trans "No articles available" %}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

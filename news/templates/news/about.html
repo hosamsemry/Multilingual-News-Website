@@ -1,0 +1,49 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "About Us" %}{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="display-4">{% trans "About Us" %}</h1>
+        </div>
+        <div class="card shadow-lg p-4">
+            <h3 class="card-title text-primary">{% trans "This is Makram Ebaid newspaper" %}</h3>
+            <p class="card-text lead mt-3">
+                {% trans "Welcome to our News Portal, your one-stop source for the latest news and articles. We aim to keep you informed and engaged with the most relevant and up-to-date stories from Nasr city." %}
+            </p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-3">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{% trans "Our Mission" %}</h5>
+                        <p class="card-text">
+                            {% trans "Our mission is to bridge the language gap in the world of news, ensuring that everyone can access information in their preferred language." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{% trans "Quality Journalism" %}</h5>
+                        <p class="card-text">
+                            {% trans "We provide well-researched and accurate articles, offering a reliable source of information for our readers." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{% trans "User-Friendly Experience" %}</h5>
+                        <p class="card-text">
+                            {% trans "Our website is designed for a smooth and easy-to-navigate experience, so you can focus on reading the news that matters." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

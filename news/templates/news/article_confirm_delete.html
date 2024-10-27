@@ -1,0 +1,18 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Delete Article" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">{% trans "Delete Article" %}</h1>
+    <div class="alert alert-warning">
+        <p>{% trans "Are you sure you want to delete this article?" %}</p>
+        <h5>{{ article.title }}</h5>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{% trans "Confirm Deletion" %}</button>
+        <a href="{% url 'news:home' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
+    </form>
+</div>
+{% endblock %}

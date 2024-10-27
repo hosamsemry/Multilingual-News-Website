@@ -1,0 +1,55 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Update Article" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">{% trans "Update Article" %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        
+        <!-- Title Field -->
+        <div class="mb-3">
+            <label for="{{ form.title.id_for_label }}" class="form-label">{% trans "Title" %}</label>
+            {{ form.title }}  <!-- Directly render the field without any filters -->
+            {% if form.title.errors %}
+                <div class="text-danger">{{ form.title.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <!-- Content Field -->
+        <div class="mb-3">
+            <label for="{{ form.content.id_for_label }}" class="form-label">{% trans "Content" %}</label>
+            {{ form.content }}  <!-- Directly render the field without any filters -->
+            {% if form.content.errors %}
+                <div class="text-danger">{{ form.content.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Category Field -->
+        <div class="mb-3">
+            <label for="{{ form.category.id_for_label }}" class="form-label">{% trans "Category" %}</label>
+            {{ form.category }}  <!-- Directly render the field without any filters -->
+            {% if form.category.errors %}
+                <div class="text-danger">{{ form.category.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Image Field -->
+        <div class="mb-3">
+            <label for="{{ form.image.id_for_label }}" class="form-label">{% trans "Image" %}</label>
+            {{ form.image }}  <!-- Directly render the field without any filters -->
+            {% if form.image.errors %}
+                <div class="text-danger">{{ form.image.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">{% trans "Update Article" %}</button>
+    </form>
+</div>
+{% endblock %}

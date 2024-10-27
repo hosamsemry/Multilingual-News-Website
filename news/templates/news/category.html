@@ -1,0 +1,54 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Category" %} - {{ category.name }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-5">{% trans "Category:" %} {{ category.name }}</h1>
+
+    <!-- News Section -->
+    <h2 class="text-center mb-4 py-2 px-3 rounded bg-light border border-primary shadow-sm" style="display: inline-block;">
+        {% trans "News" %}
+    </h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
+        {% for news_item in news %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ news_item.category.name }}</h5>
+                        <p class="card-text">
+                            {{ news_item.content|truncatechars:150 }}
+                        </p>
+                        <p class="text-muted"><small>{{ news_item.published_at|date:"Y-m-d" }}</small></p>
+                        <a href="{% url 'news:news_detail' news_item.pk %}" class="btn btn-outline-primary">{% trans "Read More" %}</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <h4 class="text-start">{% trans "No news available for this category" %}</h4>
+        {% endfor %}
+    </div>
+
+    <!-- Articles Section -->
+    <h2 class="text-center mb-4 py-2 px-3 rounded bg-light border border-primary shadow-sm" style="display: inline-block;">
+        {% trans "Articles" %}
+    </h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for article in articles %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ article.title }}</h5>
+                        <p class="text-muted"><small>{{ article.reporter.name }}</small></p>
+                        <p class="card-text">
+                            {{ article.content|truncatechars:150 }}
+                        </p>
+                        <p class="text-muted"><small>{{ article.published_at|date:"Y-m-d" }}</small></p>
+                        <a href="{% url 'news:article_detail' article.pk %}" class="btn btn-outline-primary">{% trans "Read More" %}</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <h4 class="text-start">{% trans "No articles available for this category" %}</h4>
+        {% endfor %}
+    </div>
+{% endblock %}

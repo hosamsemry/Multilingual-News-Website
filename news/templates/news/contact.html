@@ -1,0 +1,41 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Contact Us" %}{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="display-4">{% trans "Contact Us" %}</h1>
+        </div>
+        <div class="card shadow-lg p-4">
+            <p class="lead">
+                {% trans "We'd love to hear from you! If you have any questions, suggestions, or feedback, feel free to reach out to us." %}
+            </p>
+            <p class="card-text">
+                <strong>{% trans "Email" %}:</strong> <a href="mailto:makramebaidnews@gmail.com" class="text-primary">makramebaidnews@gmail.com</a>
+            </p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6 mb-3">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{% trans "Office Address" %}</h5>
+                        <p class="card-text">
+                            {% trans "48 Makram Ebaid St, Nasr City, Cairo, Egypt" %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{% trans "Phone" %}</h5>
+                        <p class="card-text">
+                            +20 123-456-7890
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

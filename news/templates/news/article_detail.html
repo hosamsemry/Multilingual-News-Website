@@ -1,0 +1,30 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+
+        <!-- Display the article's content with line breaks preserved -->
+        <p class="card-text mt-2" style="white-space: pre-wrap; word-wrap: break-word;">{{ article.content }}</p>  
+
+        <!-- Display article image if available -->
+        {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" style="max-width:100%;">
+        {% endif %}
+
+        <!-- Display reporter and publication date -->
+        <p class="mt-4"><strong>{% trans "by: " %} {{ article.reporter.name }}</strong></p>
+        <p class="mt-4"><strong>{% trans "Published on: " %} {{ article.published_at|date:"Y-m-d" }}</strong></p>
+
+        <!-- Navigation buttons with conditional permissions -->
+        <a href="{% url 'news:home' %}" class="btn btn-secondary">{% trans "Back to Home" %}</a>
+        {% if perms.news.can_update_article %}
+            <a href="{% url 'news:article_update' article.pk %}" class="btn btn-warning">{% trans "Update Article" %}</a>
+        {% endif %}
+        {% if perms.news.can_delete_article %}
+            <a href="{% url 'news:article_delete' article.pk %}" class="btn btn-danger">{% trans "Delete Article" %}</a>
+        {% endif %}
+    </div>
+{% endblock %}

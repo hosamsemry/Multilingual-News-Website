@@ -1,0 +1,25 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block title %}{{ news_item.category.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ news_item.category.name }}</h1>
+    
+    <p>{{ news_item.content }}</p> <!-- Display translated content directly -->
+
+    {% if news_item.image %}
+        <img src="{{ news_item.image.url }}" alt="{% trans 'News Image' %}" style="max-width:100%;">
+    {% endif %}
+    
+    <p><strong>{% trans "Published on:" %} {{ news_item.published_at|date:"Y-m-d" }}</strong></p>
+    
+    <a href="{% url 'news:home' %}" class="btn btn-secondary">{% trans "Back to Home" %}</a>
+    
+    {% if perms.news.can_update_news %}
+        <a href="{% url 'news:news_update' news_item.pk %}" class="btn btn-warning">{% trans "Update News" %}</a>
+    {% endif %}
+    
+    {% if perms.news.can_delete_news %}
+        <a href="{% url 'news:news_delete' news_item.pk %}" class="btn btn-danger">{% trans "Delete News" %}</a>
+    {% endif %}
+{% endblock %}
